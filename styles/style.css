@@ -1,0 +1,106 @@
+@font-face{
+    font-family: sansation;
+    src: url(./polices/Sansation_Regular.ttf)
+}
+@font-face{
+    font-family: sansationLight;
+    src: url(./polices/Sansation_Light.ttf)
+}
+@font-face{
+    font-family: sansationBold;
+    src: url(./polices/Sansation\ Bold.ttf)
+}
+
+@font-face{
+    font-family: seoul;
+    src: url(./polices/SeoulNamsanCondensed-Black.ttf)
+}
+
+
+
+
+
+body{
+    color: #EEEEEE;
+    width: 100%;
+    font-family: 'sansationLight', sans-serif;
+}
+.entete{
+    width: 100%;
+    height: 100vh;
+    background-color: #282D40;
+}
+.entete nav{
+    padding: 15px;
+    display: flex;
+}
+
+.entete nav ul{
+    display: flex;
+}
+
+nav ul a {
+    padding: 15px;
+    text-decoration: none;
+    color: white;
+}
+
+.bumper{
+    flex-grow: 2;
+}
+
+.entete div{
+    font-size: 36px;
+    text-align: center;
+    position: relative;
+    top: 40vh;
+}
+
+.entete div a{
+    padding: 10px;
+    border: 2px #EEEEEE solid;
+    font-size: 30px;
+}
+
+h1{
+    padding: 15px 15px 25px 15px;
+
+}
+.entete span{
+    font-family: 'sansationBold', sans-serif;
+}
+
+
+.propos{
+    width: 100%;
+    height: 100vh;
+    background-color: #EEEEEE;
+}
+
+.icones{
+    justify-content: space-around;
+    width: 100%;
+    display: flex;
+}
+
+.icones>div{
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+}
+
+.icones div p{
+    font-family: "seoul", "sans-serif";
+    color: #4F4F4F;
+}
+
+.icones img{
+    
+    width: 60%;
+}
+
+.icone{
+    background-color: #EC9024 ;
+}
