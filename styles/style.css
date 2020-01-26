@@ -72,14 +72,20 @@ h1{
 
 
 .propos{
-    width: 100%;
-    height: 100vh;
+    font-family: "sansationBold", "sans-serif";
+    color: #4F4F4F;
+    font-size: 40px;
+    padding: 2vh 2%;
+    width: 96%;
+    height: 96vh;
     background-color: #EEEEEE;
 }
 
 .icones{
+    
     justify-content: space-around;
-    width: 100%;
+    padding: 2%;
+    width: 96%;
     display: flex;
 }
 
@@ -93,14 +99,97 @@ h1{
 
 .icones div p{
     font-family: "seoul", "sans-serif";
-    color: #4F4F4F;
+    
 }
 
 .icones img{
     
-    width: 60%;
+    width: 45%;
 }
 
 .icone{
+    clip-path: polygon(50% 5%, 90% 25%, 90% 75%, 50% 95%, 10% 75%, 10% 25%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 250px;
+    height: 250px;
     background-color: #EC9024 ;
 }
+article{
+    display: flex;
+}
+.profil{
+    clip-path: polygon(50% 5%, 90% 25%, 90% 75%, 50% 95%, 10% 75%, 10% 25%);
+    width: 300px;
+    justify-content: center;
+}
+
+.qui img{
+    width: 100%;
+}
+
+article h3{
+    padding: 10px;
+    color: #969696;
+}
+
+article div{
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+article>div p{
+    font-family: "sansation",  "sans-serif" ;
+    font-size: 25px;
+    padding: 5px;
+}
+
+
+article a{
+    text-decoration: none;
+    color : #C76C02;
+    font-size: 18px;
+}
+
+.qui{
+    padding: 1%;
+    width: 48%;
+}
+
+.propos aside{
+    width: 48%;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.competences{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: 5px;
+    background-color: #CBCBCB;
+}
+
+.language {
+    padding: 10px 0;
+    width: 15%;
+    background-color: #EC9024;
+}
+.language p{
+    font-family: "seoul", "sans-serif";
+    font-size: 16px;
+    color: #F8F8F8;
+}
+
+.mesure{
+    background-color: #C76C02;
+    width: 50%;
+    height: 36px;
+}
+
