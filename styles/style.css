@@ -1,3 +1,4 @@
+/* polices de caractères*/
 @font-face{
     font-family: sansation;
     src: url(./polices/Sansation_Regular.ttf)
@@ -19,12 +20,14 @@
 
 
 
-
+/*STYLES GÉNÉRALES DE LA PAGE*/
 body{
     color: #EEEEEE;
     width: 100%;
     font-family: 'sansationLight', sans-serif;
 }
+
+/*STYLES DE L'ENTETE*/
 .entete{
     width: 100%;
     height: 100vh;
@@ -39,12 +42,23 @@ body{
     display: flex;
 }
 
+
+nav ul a:hover{
+    font-family: "sansationBold", "sans-serif";
+}
+nav ul li{
+    text-align: right;
+    min-width: 111px;
+}
 nav ul a {
-    padding: 15px;
+    padding: 15 0px;
     text-decoration: none;
     color: white;
 }
 
+nav ul .actif{
+    font-family: "sansationBold", "sans-serif";
+}
 .bumper{
     flex-grow: 2;
 }
@@ -55,11 +69,22 @@ nav ul a {
     position: relative;
     top: 40vh;
 }
-
-.entete div a{
+/*BOUTON POUR ALLER VOIR LES PROJET*/
+.btnVoir{
+    cursor: pointer;
     padding: 10px;
     border: 2px #EEEEEE solid;
     font-size: 30px;
+}
+
+.btnVoir:hover{
+    
+    color: #282D40;
+    background-color: #EEEEEE;
+}
+
+.btnVoir:active{
+    margin-top: 10px;
 }
 
 h1{
@@ -70,19 +95,41 @@ h1{
     font-family: 'sansationBold', sans-serif;
 }
 
-
+/*STYLES DE LA SECTION À PROPOS*/
 .propos{
+    position: relative;
     font-family: "sansationBold", "sans-serif";
     color: #4F4F4F;
     font-size: 40px;
     padding: 2vh 2%;
     width: 96%;
     height: 96vh;
-    background-color: #EEEEEE;
+    background-color: rgb(250, 250, 250);
+}
+ /*FLÈCHE VERS BAS DE LA SECTION À PROPOS*/
+.propos::after,
+.propos::before{
+    position: absolute;
+    content: '';
+    width: 150px;
+    height: 100px;
+    background-color: rgb(250, 250, 250);
+    bottom: -25px;
+    z-index: 100;
 }
 
+.propos::before{
+    right: 50%;
+    transform: skew(0, 20deg)
+}
+.propos::after{
+    left: 50%;
+    transform: skew(0, -20deg)
+}
+ /*FLÈCHE VERS BAS DE LA SECTION À PROPOS FIN*/
+
+ /*ZONE ATTRIBUTS */
 .icones{
-    
     justify-content: space-around;
     padding: 2%;
     width: 96%;
@@ -99,14 +146,13 @@ h1{
 
 .icones div p{
     font-family: "seoul", "sans-serif";
-    
 }
 
 .icones img{
-    
     width: 45%;
 }
 
+/*ICONES INDIVIDUELS FORMES ET PLACEMENTS*/
 .icone{
     clip-path: polygon(50% 5%, 90% 25%, 90% 75%, 50% 95%, 10% 75%, 10% 25%);
     display: flex;
@@ -117,6 +163,8 @@ h1{
     height: 250px;
     background-color: #EC9024 ;
 }
+
+/* SECTION QUI SUIS-JE*/
 article{
     display: flex;
 }
@@ -159,7 +207,9 @@ article a{
     padding: 1%;
     width: 48%;
 }
+/*FIN DE LA SECTION QUI SUIS-JE*/
 
+/*SECTION COMPÉTENCES */
 .propos aside{
     width: 48%;
     padding: 1%;
@@ -192,4 +242,137 @@ article a{
     width: 50%;
     height: 36px;
 }
+/*FIN DE LE SECTION COMPÉTENCES */
 
+/*SECTION DE PRÉSENTATION DES PROJET*/
+.projets{
+    padding: 5% 2% 5% 2%;
+    color: #4F4F4F;
+    font-size: 40px;
+    font-family: "sansationBold",  "sans-serif" ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #EBEBEB;
+}
+.projets h3{
+    align-self: flex-start;
+}
+
+/*FILTRE DANS LA SECTION PROJET*/
+.filtres{
+    width: 80%;
+}
+
+.projets ul{
+    padding: 2%;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.projets li{
+    padding: 10px;
+}
+
+/*PLACEMENTS DES PROJES DANS LA SECTION PROJET*/
+.mesProjets{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.unProjet{
+    position: relative;
+    width: 33.33333%;
+}
+
+.imgContainer{
+    width: 100%;
+}
+
+.imgContainer img{
+    width:100%;
+}
+
+/*HOVER SUR LE PROJET */
+
+.unProjet:hover .projetHov{
+    display: flex;
+}
+.projetHov{
+    display: none; /* temporaire  jusqua l'ajout des hovers*/
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    height: 100%;
+    width: 100%;
+    color: #FFFFFF;
+    background-color: rgba(40, 45, 64, 0.87)
+}
+
+
+.texte{
+    position: absolute;
+    text-align: center;
+    top: 40%;
+}
+
+.texte p{
+    font-size: 45px;
+    padding-bottom: 40px;
+}
+
+.plus{
+    cursor: pointer;
+    font-size: 25px;
+    font-family: "sansation",  "sans-serif" ;
+    padding: 10px;
+    border: 1px white solid;
+    border-radius: 25px;
+    color: #E8E8E8;
+}
+
+.plus:hover{
+    color: #282D40;
+    background-color: white
+}
+
+.plus:active{
+    margin:1px;
+}
+/*FIN DE LA SECTION PROJET*/
+
+/*FOOTER*/
+footer{
+    padding: 3%;
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    color: white;
+    background-color: #282D40;
+}
+
+footer h3{
+    font-size: 40px;
+    padding-bottom: 30px; 
+    font-family: "sansationBold",  "sans-serif" ;
+}
+footer div{
+    padding-right: 20px;
+}
+
+footer div p{
+    font-family: "sansationBold", "sans-serif";
+
+}
+
+
+footer>p{
+    padding: 0 20px 20px 20px;
+}
+/*FIN DU FOOTER*/
