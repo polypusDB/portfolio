@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./scripts/script.js"></script>
     <link rel="stylesheet" type="text/css" href="./styles/reset.css">
     <link rel="stylesheet" type="text/css" href="./styles/style.css">
     <link href="https://fonts.googleapis.com/css?family=Overpass:300,400&display=swap" rel="stylesheet">
@@ -11,22 +12,27 @@
 </head>
 <body>
     
-    <section class="entete">
+    <section id="entete" class="entete">
         <nav>
-            <span class="bumper"></span>
-            <ul class="menu">
-                <li><a class="actif" href="#">ACCUEIL</a></li>
-                <li><a href="#">À PROPOS</a></li>
-                <li><a href="#">PORTFOLIO</a></li>
-                <li><a href="#">CONTACT</a></li>
+            <div class="bumper"></div>
+            <div class="menu_burger">
+                <div class="_haut"></div>
+                <div class="_milieu"></div>
+                <div class="_bas"></div>
+            </div>
+            <ul class="menu open">
+                <li><a class="actif" href="#entete">ACCUEIL</a></li>
+                <li><a href="#propos">À PROPOS</a></li>
+                <li><a href="#projet">PORTFOLIO</a></li>
+                <li><a href="#contact">CONTACT</a></li>
             </ul>
         </nav>
         <div>
             <h1>BONJOUR, JE M'APPELLE <span>SAUL TURBIDE</span><br>¨ET JE SUIS INTÉGRATEUR MULTIMÉDIA</h1>
-            <a class="btnVoir">VOIR MES RÉALISATIONS</a>
+            <a href="#projet" class="btnVoir">VOIR MES RÉALISATIONS</a>
         </div>
     </section>
-    <section class="propos">
+    <section id="propos" class="propos">
         <h2>À PROPOS</h2>
         <div class="icones">
             <div>
@@ -152,11 +158,11 @@
             </aside>
         </article>
     </section>
-    <section class="projets">
+    <section id="projet" class="projets">
         <h3>PROJETS</h3>
         <div class="filtres">
             <ul>
-                <li class="filtre">TOUS</li>
+                <li class="filtre actif">TOUS</li>
                 <li class="filtre">WEB</li>
                 <li class="filtre">JEUX</li>
                 <li class="filtre">3D</li>
@@ -227,7 +233,7 @@
             </div>
         </article>
     </section>
-    <footer>
+    <footer id="contact">
         <div>
             <h3>Contact</h3>
             <p>saul.turbide@gmail.com</p>
@@ -235,5 +241,29 @@
         <p>Intéressé par ce que vous voyez? Vous avez des idées vraiment cool et vous cherchez des gens pour les réaliser? </p>
         <p>N’hésitez pas à me contacter pour en parler et nous devrions pouvoir concrétiser votre vision!</p>
     </footer>
+    <section class="projetSelect close">
+        <div class="btn_X">
+                    <div class="x_droit"></div>
+                    <div class="x_gauche"></div>
+        </div>
+        <div class="contenue">
+                <div class="left">
+                        <img src="./images/mokup.png"/>
+                        <a href="#" class="btn_lien">VOIR LE PROJET</a>
+                    </div>
+                    <div class="right">
+                        <h2 class="nom">ART PUB MTL</h2>
+                        <p class="type">WEB</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget odio sit amet sem porttitor sollicitudin. Suspendisse lectus metus, porta quis suscipit sit amet, eleifend sit amet eros. Fusce a velit et ipsum elementum lacinia at id libero. Donec ac est id metus blandit dignissim id vitae augue. Ut sed congue sapien. Aenean mollis nulla at lorem sollicitudin placerat.</p>
+                        <ul>
+                            <li>PHP</li>
+                            <li>JAVASCRIPT</li>
+                            <li>HTML</li>
+                            <li>AJAX</li>
+                            <li>CSS</li>
+                        </ul>
+                    </div>
+        </div>
+    </section>
 </body>
 </html>
