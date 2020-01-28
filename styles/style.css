@@ -39,6 +39,7 @@ body{
 }
 
 .menu_burger{
+    display: none;
     position: relative;
     height: 33px;
     width: 33px;
@@ -129,6 +130,7 @@ h1{
 
 /*STYLES DE LA SECTION À PROPOS*/
 .propos{
+    
     position: relative;
     font-family: "sansationBold", "sans-serif";
     color: #4F4F4F;
@@ -147,7 +149,7 @@ h1{
     height: 100px;
     background-color: rgb(250, 250, 250);
     bottom: -25px;
-    z-index: 100;
+    z-index: 50;
 }
 
 .propos::before{
@@ -198,6 +200,8 @@ h1{
 
 /* SECTION QUI SUIS-JE*/
 article{
+    position: relative;
+    z-index: 51;
     display: flex;
 }
 .profil{
@@ -433,7 +437,7 @@ footer>p{
     padding: 2vh 2%;
     font-size: 30px;
     width: 96%;
-    height: 96vh;
+    height: 100vh;
     z-index: 1000;
     background-color: rgba(40, 45, 64, 0.95);
     position: fixed;
@@ -444,10 +448,12 @@ footer>p{
 
 .projetSelect>div{
     display: flex;
+    flex-wrap: wrap;
 }
 
 .left{
-    padding: 2% 0;
+    max-height: 70vh;
+    padding: 1% 0;
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -459,7 +465,7 @@ footer>p{
 }
 
 .right{
-    padding: 2% 2%;
+    padding: 3% 2%;
     width:46%;
     font-family: "sansationBold", "sans-serif";
 }
@@ -468,13 +474,19 @@ footer>p{
     padding: 0 0 70px 0;
     font-size: 60px;
 }
+
+.nom_mobile{
+    font-size: 30px;
+    font-family: "sansationBold", "sans-serif";
+    display: none;
+}
 .right .type{
     padding: 0 0 70px 0;
     font-size: 40px;
     
 
 }
-.right p{
+.right>p{
     padding: 0 20% 70px 0;
     font-family: "sansation", "sans-serif";
 }
@@ -491,6 +503,8 @@ footer>p{
 }
 
 .btn_lien{
+    position: absolute;
+    bottom: 9vh;
     margin-left: 75px;
     text-align: center;
     padding: 15px;
@@ -509,10 +523,10 @@ footer>p{
 
 
 .btn_X{
-    position: relative;
+    position: absolute;
     align-self: flex-end;
-    width: 75px;
-    height: 75px;
+    min-width: 50px;
+    min-height: 50px;
     /* background-color: chartreuse; */
 }
 
@@ -520,7 +534,7 @@ footer>p{
 .x_gauche{
     position: absolute;
     left: 50%;
-    width: 10%;
+    width: 5px;
     height: 100%;
     background-color: #F3F3F3;
 }
@@ -534,13 +548,69 @@ footer>p{
 
 }
 
+.selecteurContenue{
+    display: none;
+}
 
-@media only screen and (max-width: 600px) {
+/*média querry---------------------------------------------------------------------------------------------------*/
+@media only screen and (max-width: 1200px) {
 
+.propos{
+    font-size: 35px;
+}
+
+.icone{
+    max-width: 129px;
+    max-height: 129px;
+}
+
+.icones{
+    font-size: 30px;
+}
+.right{
+    width: 36%;
+}
+
+.left{
+    padding: 6vh 0 0 0;
+    width: 60%;
+}
+
+
+.right>p{
+    font-size: 20px;
+}
+
+.right .type{
+    font-size: 45px;
+    padding: 25px 0 30px 0;
+}
+
+.right .nom{
+    padding: 25px 0 30px 0;
+    font-size: 50px;
+}
+
+.right ul{
+    font-size: 20px;
+}
+
+.left{
+    flex-direction: column;
+    justify-content: center;
+}
+
+}
+
+ @media only screen and (max-width: 600px) {
 
     .entete .menu{
         font-size: 20px;
         display: none;
+    }
+
+    .menu_burger{
+        display: block;
     }
 
     .entete .menu.open{
@@ -576,6 +646,8 @@ footer>p{
 
 
     .icones{
+        padding-top: 25px; 
+        padding-bottom: 25px; 
         font-size: 25px;
         flex-wrap: wrap;
     }
@@ -594,6 +666,10 @@ footer>p{
     .propos>article>div,
     .propos>article>aside{
         width: 100%;
+    }
+
+    .propos>article>aside{
+        padding: 25px 0;
     }
 
     .language{
@@ -649,7 +725,6 @@ footer>p{
     }
     footer  {
         flex-direction: column;
-        /* display: none; */
     }
 
     footer h3{
@@ -657,6 +732,108 @@ footer>p{
         font-size: 30px;
     }
 
+    .nom{
+        display:none;
+    }
+
+    .nom_mobile{
+        padding: 15px;
+        display: block;
+    }
+
+    .right{
+        width: 100%;
+    }
+
+    .right>p {
+        display: none;
+        padding:  15px 30px;
+    }
+
+    .right>p.actif{
+        display: block;
+    }
+
+    .right ul{
+        display: none;
+    }
+
+    .right ul.actif{
+        display: flex;
+        padding-top: 15px;
+        margin: auto;
+    }
+
+    .right .selecteurContenue{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        /* text-align: center; */
+        font-family: 'sansationLight', sans-serif;
+
+    }
+
+    .selecteurContenue .actif{
+        background-color: #F3F3F3;
+        color: #282D40;
+    }
+
+    .right .selecteurContenue p{
+        border: 1px solid #F3F3F3;
+        padding: 12px 20px;
+    }
+
+    .btn_lien{
+        bottom: 50px;
+        position: absolute;
+        border: 1px #F3F3F3 solid;
+        font-size: 20px;
+        max-width: 182px;
+        margin-left: auto;
+        margin-right: auto;
+        left: 0;
+        right: 0;
+    }
+
+    .left{
+        height: 35vh;
+        width: 100%;
+    }
+
+    .left img {
+        max-height: 35vh;
+        width: auto;
+    }
+
+    .type{
+        display: none;
+    }
+
+    .projetSelect{
+        width: 94%;
+        padding: 2vh 3%;
+    }
+    .projetSelect .contenue{
+
+        font-size: 16px;
+        flex-direction: column;
+    }
+
+
+    .btn_X{
+        min-height: 30px;
+        min-width: 30px;
+    }
+
+    .x_droit{
+        width: 3px;
+    }
+    .x_gauche{
+        width: 3px;
+    }
+
+
+    
     footer p{
         padding: 10px 20px 10px 0; 
         font-size: 20px;
@@ -665,4 +842,4 @@ footer>p{
     footer>p:nth-of-type(2){
         display: none;
     }
-  }
+  } 

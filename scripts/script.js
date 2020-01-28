@@ -7,6 +7,16 @@
         let filtre = document.querySelectorAll(".filtre");
         let menu_burg = document.querySelector(".menu_burger");
         let menu_ul = document.querySelector(".menu");
+
+        let selecteur = this.document.querySelector(".selecteurContenue");
+        let selecteurLan = this.document.querySelector(".languages");
+        let selecteurDes = this.document.querySelector(".description");
+        
+        let listeLanguages = this.document.querySelector(".laListeLanguages");
+        let laDescription = this.document.querySelector(".laDescription");
+
+
+
         
 
         menu_burg.addEventListener("click", function(){
@@ -23,8 +33,9 @@
          * ouvrir la boîte de dialoague
          */
         parent_projet.addEventListener("click", function(evt){
+            dialog_box.classList.toggle("close");
             if(evt.target.classList.contains("plus")){
-                dialog_box.classList.toggle("close");
+                // dialog_box.classList.toggle("close");
             }
         });
 
@@ -39,6 +50,16 @@
             }
         })
 
+
+        selecteur.addEventListener("click", function(evt){
+            if(!evt.target.classList.contains("actif")){
+                selecteurLan.classList.toggle("actif");
+                selecteurDes.classList.toggle("actif");
+
+                laDescription.classList.toggle("actif");
+                listeLanguages.classList.toggle("actif");
+            }
+        })
 
 
     });
