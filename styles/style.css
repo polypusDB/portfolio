@@ -21,6 +21,12 @@
 
 
 /*STYLES GÉNÉRALES DE LA PAGE*/
+html{
+    
+    scroll-behavior: smooth;
+
+}
+
 body{
     color: #EEEEEE;
     width: 100%;
@@ -111,11 +117,15 @@ nav ul .actif{
     padding: 10px;
     border: 2px #EEEEEE solid;
     font-size: 30px;
+
+    transition: color 250ms, background-color 250ms;
 }
 
 .btnVoir:hover{
     color: #282D40;
     background-color: #EEEEEE;
+
+    transition: color 250ms, background-color 250ms;
 }
 
 
@@ -137,7 +147,7 @@ h1{
     font-size: 40px;
     padding: 2vh 2%;
     width: 96%;
-    height: 96vh;
+    height: auto;
     background-color: rgb(250, 250, 250);
 }
  /*FLÈCHE VERS BAS DE LA SECTION À PROPOS*/
@@ -275,8 +285,15 @@ article a{
 
 .mesure{
     background-color: #C76C02;
-    width: 50%;
+    width: 0%;
     height: 36px;
+    transition-delay: 2s;
+    transition: width 400ms ease-out;
+}
+
+.mesure.appear{
+    transition-delay: 200ms;
+    width: 50%;
 }
 /*FIN DE LE SECTION COMPÉTENCES */
 
@@ -299,8 +316,11 @@ article a{
 .filtres{
     width: 80%;
 }
+
 .filtre{
     cursor: pointer;
+    background-color: transparent;
+    transition: background-color 150ms ease-in-out, color 150ms ease-in-out;
 }
 .filtre.actif{
     color: #EEEEEE;
@@ -333,6 +353,16 @@ article a{
 .unProjet{
     position: relative;
     width: 33.33333%;
+    z-index: 10;
+    transform: scale(1);
+    transition: transform 250ms ease-in-out;
+}
+
+.unProjet:hover{
+    cursor: pointer;
+    z-index: 11;
+    transform: scale(1.15);
+    transition: transform 100ms ease-in-out;
 }
 
 .imgContainer{
@@ -346,10 +376,17 @@ article a{
 /*HOVER SUR LE PROJET */
 
 .unProjet:hover .projetHov{
-    display: flex;
+    opacity: 1;
+
+    transition: opacity 250ms ease-in;
 }
+
+
+
+
 .projetHov{
-    display: none; /* temporaire  jusqua l'ajout des hovers*/
+    display: flex;
+    opacity: 0;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -360,7 +397,9 @@ article a{
     height: 100%;
     width: 100%;
     color: #FFFFFF;
-    background-color: rgba(40, 45, 64, 0.87)
+    background-color: rgba(40, 45, 64, 0.87);
+
+    transition: opacity 100ms ease-in;
 }
 
 
@@ -384,6 +423,8 @@ article a{
     border: 1px white solid;
     border-radius: 25px;
     color: #E8E8E8;
+
+    transition: color 200ms ease-in, background-color 200ms ease-in;
 }
 
 .plus:hover{
@@ -429,9 +470,7 @@ footer>p{
 
 /*BOITE DE DIALOGUE*/
 
-.projetSelect.close{
-    display: none;
-}
+
 
 .projetSelect{
     padding: 2vh 2%;
@@ -444,6 +483,13 @@ footer>p{
     top: 0;
     display: flex;
     flex-direction: column;
+    
+    transform: scale(1,1);
+}
+
+.projetSelect.close{
+    /* display: none; */
+    transform: scale(0,0);
 }
 
 .projetSelect>div{
@@ -602,29 +648,135 @@ footer>p{
 
 }
 
+
  @media only screen and (max-width: 600px) {
 
     .entete .menu{
+        display: flex;
+        position: fixed;
+        top: 0;
+        left: 0;
+        flex-direction: column;
+        justify-content: space-around;
+        background-color: rgba(40, 45, 64, 0.97);
+        width: 100vw;
+        height: 50vh;
+        z-index: 100;
+        padding: 25vh 0;
+        transform-origin: 100% 0;
         font-size: 20px;
-        display: none;
+        opacity: 0;
+        transform: scale(0,0);
+        transition:opacity 100ms ease, transform 200ms ease;
     }
 
     .menu_burger{
         display: block;
     }
 
+    .menu_burger.actif ._milieu{
+        display: none;
+    }
+    .menu_burger.actif ._haut{
+
+        animation-name: animBtnMenuHaut;
+        animation-duration: 200ms;
+        animation-fill-mode: forwards;
+    }
+    .menu_burger.actif ._bas{
+
+        animation-name: animBtnMenuBas;
+        animation-duration: 200ms;
+        animation-fill-mode: forwards;
+    } 
+
+    @keyframes animBtnMenuBas {
+        0%   {
+
+        }
+        20%  {
+            top: 50%;
+        }
+        30%{
+            top: 50%;
+        }
+         100% {
+            top: 50%;
+            transform: rotate(45deg);
+            }  
+    }
+    @keyframes animBtnMenuHaut {
+        0%   {
+
+        }
+        20%  {
+            top: 50%;
+            
+        }
+
+         100% {
+            top: 50%;
+            transform: rotate(-45deg);
+            }  
+    }
+
+
+    .menu_burger.fermer ._milieu{
+        
+        display: block;
+        transition-delay: display 15000ms;
+    }
+    .menu_burger.fermer ._haut{
+
+        animation-name: animBtnMenuHautFermer;
+        animation-duration: 100ms;
+        animation-fill-mode: forwards;
+    }
+    .menu_burger.fermer ._bas{
+
+        animation-name: animBtnMenuBasFermer;
+        animation-duration: 100ms;
+        animation-fill-mode: forwards;
+    } 
+
+    @keyframes animBtnMenuBasFermer {
+        0%   {
+            top: 50%;
+            transform: rotate(45deg);
+        }
+
+        80%{
+            top: 50%;
+        }
+         100% {
+
+            }  
+    }
+    @keyframes animBtnMenuHautFermer {
+        0%   {
+            top: 50%;
+            transform: rotate(-45deg);
+        }
+
+        50%{
+            top: 50%;
+        }
+         100% {
+
+        }  
+    }
+
+    
+
+
+
+
     .entete .menu.open{
-        top: 0;
-        left: 0;
-        position: absolute;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-        padding: 25vh 0;
-        background-color: rgba(40, 45, 64, 0.97);
-        width: 100vw;
-        height: 50vh;
-        z-index: 100;
+
+
+        opacity: 1;
+        transform: scale(1,1);
+        transition: opacity 200ms ease, transform 200ms ease;
     }
 
     .entete>div{
@@ -843,3 +995,22 @@ footer>p{
         display: none;
     }
   } 
+
+
+
+
+
+  /* annimation fade-in */
+
+
+  .fade-in{
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 200ms ease-in, transform 200ms ease-in;
+      
+  }
+
+  .fade-in.appear{
+    transform: translateY(0);
+    opacity: 1;
+  }

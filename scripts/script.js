@@ -20,7 +20,16 @@
         
 
         menu_burg.addEventListener("click", function(){
-            console.log(menu_burg);
+            if(menu_burg.classList.contains("actif")){
+                menu_burg.classList.remove("actif");
+                menu_burg.classList.add("fermer");
+            }
+            else{
+                menu_burg.classList.add("actif");
+                menu_burg.classList.remove("fermer");
+
+
+            }
             menu_ul.classList.toggle("open");
         })
         /**
@@ -28,14 +37,16 @@
          */
         btn_close.addEventListener("click", function(){
             dialog_box.classList.toggle("close");
+            
         });
         /**
          * ouvrir la boîte de dialoague
          */
         parent_projet.addEventListener("click", function(evt){
             dialog_box.classList.toggle("close");
+            console.log(evt.clientX);
             if(evt.target.classList.contains("plus")){
-                // dialog_box.classList.toggle("close");
+                
             }
         });
 
@@ -60,6 +71,55 @@
                 listeLanguages.classList.toggle("actif");
             }
         })
+
+
+
+
+        // window.addEventListener("scroll", function(){
+        //     var rect = filtre.getBoundingClientRect(),
+        //     scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+        //     scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        //     console.dir(rect); 
+        // })
+
+
+
+
+/**
+ * LES FADES INS SONT ICI TEMPORAIREMENT!
+ */     
+const appreaOptions = {
+    root: null,
+    threshold: 1,
+    rootMargin: "-50px 0px"
+};
+
+        const faders = document.querySelectorAll(".fade-in");
+        const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll){
+
+            entries.forEach(entry =>{
+                if(!entry.isIntersecting){
+                    return;
+                }
+                entry.target.classList.add("appear");
+                entry.target.children[1].classList.add("appear");
+                appearOnScroll.unobserve(entry.target);
+            });
+
+
+
+        }, appreaOptions)
+
+    
+        faders.forEach(fader => {
+            console.log(fader.children[1]);
+            appearOnScroll.observe(fader);
+        })
+
+
+
+        
+
 
 
     });
