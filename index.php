@@ -11,6 +11,34 @@
     <link href="https://fonts.googleapis.com/css?family=Overpass:300,400&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
+
+<?php
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $db = "portfolio";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $db);
+
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    echo "Connected successfully<br>";
+
+
+
+    $sql = "SELECT * from projets";
+    echo $sql."<br>";
+    $projets = $conn->query($sql);
+    
+    // var_dump($projets);
+
+
+    // $conn->close();
+?>
+
 <body>
     
     <section id="entete" class="entete">
@@ -170,6 +198,43 @@
             </ul>
         </div>
         <article class="mesProjets">
+        <?php
+            if ($projets->num_rows > 0) {
+                // output data of each row
+                while($row = $projets->fetch_assoc()) {
+                    extract($row);
+                    ?>
+                    <div class="unProjet">
+                        <div class="imgContainer">
+                            <img src="./images/art_pub_mtl_miniature.jpg">
+                        </div>
+                        <div class="projetHov">
+                            <div class="texte">
+                                <p class="titre"><?=$titre ?></p>
+                                <a class="plus">EN SAVOIR PLUS</a>
+                            </div>
+                        </div>
+                    </div>
+                    <?php
+                    // echo "id: " . $row["id"]. " - titre: " . $row["titre"]. " " . $row["description"]. "<BR>TYPE : " . $row["type"] ."<br>";
+                }
+            } else {
+                echo "0 results";
+            }
+        ?>
+
+
+            <!-- <div class="unProjet">
+                <div class="imgContainer">
+                    <img src="./images/art_pub_mtl_miniature.jpg">
+                </div>
+                <div class="projetHov">
+                    <div class="texte">
+                        <p class="titre">ART PUB MTL</p>
+                        <a class="plus">EN SAVOIR PLUS</a>
+                    </div>
+                </div>
+            </div>             -->
             <div class="unProjet">
                 <div class="imgContainer">
                     <img src="./images/art_pub_mtl_miniature.jpg">
@@ -180,28 +245,19 @@
                         <a class="plus">EN SAVOIR PLUS</a>
                     </div>
                 </div>
-            </div>
+            </div>            
             <div class="unProjet">
                 <div class="imgContainer">
                     <img src="./images/art_pub_mtl_miniature.jpg">
                 </div>
                 <div class="projetHov">
-                    <div class="texte">
-                        <p class="titre">ART PUB MTL</p>
-                        <a class="plus">EN SAVOIR PLUS</a>
-                    </div>
+                        <div class="texte">
+                                <p class="titre">ART PUB MTL</p>
+                                <a class="plus">EN SAVOIR PLUS</a>
+                            </div>
                 </div>
-            </div>            <div class="unProjet">
-                <div class="imgContainer">
-                    <img src="./images/art_pub_mtl_miniature.jpg">
-                </div>
-                <div class="projetHov">
-                    <div class="texte">
-                        <p class="titre">ART PUB MTL</p>
-                        <a class="plus">EN SAVOIR PLUS</a>
-                    </div>
-                </div>
-            </div>            <div class="unProjet">
+            </div>            
+            <div class="unProjet">
                 <div class="imgContainer">
                     <img src="./images/art_pub_mtl_miniature.jpg">
                 </div>
@@ -211,17 +267,8 @@
                                 <a class="plus">EN SAVOIR PLUS</a>
                             </div>
                 </div>
-            </div>            <div class="unProjet">
-                <div class="imgContainer">
-                    <img src="./images/art_pub_mtl_miniature.jpg">
-                </div>
-                <div class="projetHov">
-                        <div class="texte">
-                                <p class="titre">ART PUB MTL</p>
-                                <a class="plus">EN SAVOIR PLUS</a>
-                            </div>
-                </div>
-            </div>            <div class="unProjet">
+            </div>            
+            <div class="unProjet">
                 <div class="imgContainer">
                     <img src="./images/art_pub_mtl_miniature.jpg">
                 </div>
