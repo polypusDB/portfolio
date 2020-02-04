@@ -16,6 +16,11 @@
         let laDescription = this.document.querySelector(".laDescription");
 
 
+        function getProjets(){
+            $.get("projetDetails.php",{"idProjet" : 1}, (data)=>{
+                console.log(data);
+            })
+        }
 
         
 
@@ -44,10 +49,13 @@
          */
         parent_projet.addEventListener("click", function(evt){
             dialog_box.classList.toggle("close");
-            console.log(evt.clientX);
-            if(evt.target.classList.contains("plus")){
-                
-            }
+            console.log(evt.target.parentNode.classList[1]);
+            let projectID = evt.target.parentNode.classList[1];
+
+
+
+
+
         });
 
         filtres.addEventListener("click", function(evt){
@@ -119,7 +127,7 @@ const appreaOptions = {
 
 
         
-
+        getProjets();
 
 
     });

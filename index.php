@@ -13,10 +13,12 @@
 </head>
 
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $db = "portfolio";
+
+    
+    $servername = "localhost"; // db5000288875.hosting-data.io
+    $username = "root"; // dbu297767
+    $password = ""; //1073582St.
+    $db = "portfolio"; //dbs282112
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $db);
@@ -25,18 +27,49 @@
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    echo "Connected successfully<br>";
 
 
-
-    $sql = "SELECT * from projets";
-    echo $sql."<br>";
+    $res = Array();
+    $sql = "SELECT  p.*, i.*
+    from projets p
+    JOIN imageprojet ip
+    ON ip.id_projet = p.id
+    JOIN images i
+    ON i.id_image = ip.id_image";
     $projets = $conn->query($sql);
+
+    if ($projets->num_rows > 0) {
+        while($projet = $projets->fetch_assoc()) {
+            $pro = end($res);
+				if(isset($pro) && $pro['id'] != $projet['id']){
+                    $projet["images"] = array();
+                    $projet["images"][] = array(
+                                                "src" => $projet["src"],
+                                                "role" => $projet["role"],
+                                                "meta" => $projet["meta"],
+                                                );
+                    unset($projet["id_image"]);
+                    unset($projet["src"]);
+                    unset($projet["role"]);
+                    unset($projet["meta"]);
+                    $res[] = $projet;
+                }
+                else if(isset($pro) && $pro['id'] == $projet['id']){
+                    $i = count($res)-1;
+                    $res[$i]["images"][] = array(
+                                                "src" => $projet["src"],
+                                                "role" => $projet["role"],
+                                                "meta" => $projet["meta"],
+                                                );
+                }
+        }
+
+        // print_r($res);
     
-    // var_dump($projets);
+    }
 
+    // include("./projetDetails.php");
 
-    // $conn->close();
 ?>
 
 <body>
@@ -57,7 +90,7 @@
             </ul>
         </nav>
         <div>
-            <h1>BONJOUR, JE M'APPELLE <span>SAUL TURBIDE</span><br>¨ET JE SUIS INTÉGRATEUR MULTIMÉDIA</h1>
+            <h1>BONJOUR, JE M'APPELLE <span>SAUL TURBIDE</span><br>ET JE SUIS INTÉGRATEUR MULTIMÉDIA</h1>
             <a href="#projet" class="btnVoir">VOIR MES RÉALISATIONS</a>
         </div>
     </section>
@@ -198,76 +231,29 @@
             </ul>
         </div>
         <article class="mesProjets">
+
+
+
         <?php
-            if ($projets->num_rows > 0) {
-                // output data of each row
-                while($row = $projets->fetch_assoc()) {
-                    extract($row);
+                for($i = 0; $i<= count($res)-1; $i++){
+                    extract($res[$i]);
                     ?>
-                    <div class="unProjet">
+                     <div class="unProjet  <?=$id?>">
                         <div class="imgContainer">
-                            <img src="./images/art_pub_mtl_miniature.jpg">
+
+                            <img src="<?=$images[0]["src"]?>">
                         </div>
-                        <div class="projetHov">
-                            <div class="texte">
+                         <div class="projetHov">
+                            <div  class="texte  <?=$id?>">
                                 <p class="titre"><?=$titre ?></p>
                                 <a class="plus">EN SAVOIR PLUS</a>
                             </div>
                         </div>
                     </div>
-                    <?php
-                    // echo "id: " . $row["id"]. " - titre: " . $row["titre"]. " " . $row["description"]. "<BR>TYPE : " . $row["type"] ."<br>";
+                     <?php
                 }
-            } else {
-                echo "0 results";
-            }
-        ?>
 
-
-            <!-- <div class="unProjet">
-                <div class="imgContainer">
-                    <img src="./images/art_pub_mtl_miniature.jpg">
-                </div>
-                <div class="projetHov">
-                    <div class="texte">
-                        <p class="titre">ART PUB MTL</p>
-                        <a class="plus">EN SAVOIR PLUS</a>
-                    </div>
-                </div>
-            </div>             -->
-            <div class="unProjet">
-                <div class="imgContainer">
-                    <img src="./images/art_pub_mtl_miniature.jpg">
-                </div>
-                <div class="projetHov">
-                    <div class="texte">
-                        <p class="titre">ART PUB MTL</p>
-                        <a class="plus">EN SAVOIR PLUS</a>
-                    </div>
-                </div>
-            </div>            
-            <div class="unProjet">
-                <div class="imgContainer">
-                    <img src="./images/art_pub_mtl_miniature.jpg">
-                </div>
-                <div class="projetHov">
-                        <div class="texte">
-                                <p class="titre">ART PUB MTL</p>
-                                <a class="plus">EN SAVOIR PLUS</a>
-                            </div>
-                </div>
-            </div>            
-            <div class="unProjet">
-                <div class="imgContainer">
-                    <img src="./images/art_pub_mtl_miniature.jpg">
-                </div>
-                <div class="projetHov">
-                        <div class="texte">
-                                <p class="titre">ART PUB MTL</p>
-                                <a class="plus">EN SAVOIR PLUS</a>
-                            </div>
-                </div>
-            </div>            
+        ?>                      
             <div class="unProjet">
                 <div class="imgContainer">
                     <img src="./images/art_pub_mtl_miniature.jpg">
@@ -295,6 +281,10 @@
                     <div class="x_gauche"></div>
         </div>
         <div class="contenue">
+
+        <?php
+            
+        ?>
             <h2 class="nom_mobile">ART PUB MTL</h2>
             <div class="left">
                 <img src="./images/mokup.png"/>
