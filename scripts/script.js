@@ -15,14 +15,25 @@
         let listeLanguages = this.document.querySelector(".laListeLanguages");
         let laDescription = this.document.querySelector(".laDescription");
 
+        let template = document.querySelector("#detailProjet");
+        let parent = document.querySelector(".contenue");
 
+
+        let projets;
         function getProjets(){
             $.get("projetDetails.php",{"idProjet" : 1}, (data)=>{
-                console.log(data);
+                
+                // console.log(JSON.parse(data));
+                projets = JSON.parse(data);
+                // renderProjet();
+                
             })
         }
 
-        
+        // function renderProjet(data){
+        //     console.log(data);
+
+        // }
 
         menu_burg.addEventListener("click", function(){
             if(menu_burg.classList.contains("actif")){
@@ -43,18 +54,31 @@
         btn_close.addEventListener("click", function(){
             dialog_box.classList.toggle("close");
             
+            parent.innerHTML = "";
         });
         /**
          * ouvrir la boîte de dialoague
          */
         parent_projet.addEventListener("click", function(evt){
-            dialog_box.classList.toggle("close");
-            console.log(evt.target.parentNode.classList[1]);
             let projectID = evt.target.parentNode.classList[1];
+            let leProjet = projets[projectID-1];
 
+            leProjet.src = leProjet.images[0].src;
+            let unProjet = template.cloneNode(true);
+            for(let prop in leProjet){
 
-
-
+                let regExp = new RegExp("{{"+prop+"}}", "g");
+                unProjet.innerHTML = unProjet.innerHTML.replace(regExp, leProjet[prop]);   
+            }
+            let nouveauNoeud = document.importNode(unProjet.content, true);
+            parent.append(nouveauNoeud);
+            // for(let i=0;i<=leProjet.languages.length;i++){
+            //     let li = document.createElement("LI");
+            //     li.textContent = leProjet.languages[i];
+            //     listeParent.append(li);
+            // }
+            dialog_box.classList.toggle("close");
+            loadingliste(leProjet.languages);
 
         });
 
@@ -69,16 +93,24 @@
             }
         })
 
-
-        selecteur.addEventListener("click", function(evt){
-            if(!evt.target.classList.contains("actif")){
-                selecteurLan.classList.toggle("actif");
-                selecteurDes.classList.toggle("actif");
-
-                laDescription.classList.toggle("actif");
-                listeLanguages.classList.toggle("actif");
+        function loadingliste(liste){
+            let listeParent = document.querySelector(".laListeLanguages");
+            for(let i=0;i<=liste.length;i++){
+                let li = document.createElement("LI");
+                li.textContent = liste[i];
+                listeParent.append(li);
             }
-        })
+        }
+
+        // selecteur.addEventListener("click", function(evt){
+        //     if(!evt.target.classList.contains("actif")){
+        //         selecteurLan.classList.toggle("actif");
+        //         selecteurDes.classList.toggle("actif");
+
+        //         laDescription.classList.toggle("actif");
+        //         listeLanguages.classList.toggle("actif");
+        //     }
+        // })
 
 
 
@@ -120,7 +152,7 @@ const appreaOptions = {
 
     
         faders.forEach(fader => {
-            console.log(fader.children[1]);
+            // console.log(fader.children[1]);
             appearOnScroll.observe(fader);
         })
 

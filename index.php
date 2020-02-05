@@ -28,6 +28,7 @@
         die("Connection failed: " . $conn->connect_error);
     }
 
+    $conn->set_charset("utf8");
 
     $res = Array();
     $sql = "SELECT  p.*, i.*
@@ -64,8 +65,8 @@
                 }
         }
 
-        // print_r($res);
-    
+
+
     }
 
     // include("./projetDetails.php");
@@ -73,6 +74,24 @@
 ?>
 
 <body>
+    <template id="detailProjet">
+            <h2 class="nom_mobile">{{titre}}</h2>
+            <div class="left">
+                <img src="{{src}}"/>
+            </div>
+            <div class="right">
+                <h2 class="nom">{{titre}}</h2>
+            <p class="type">{{type}}</p>
+            <div class="selecteurContenue">
+                <p class="description actif">DESCRIPTION</p>
+                <p class="languages">LANGUAGES</p>
+            </div>
+                <p class="laDescription actif">{{description}}</p>
+                <ul class="laListeLanguages">
+                </ul>
+            </div>
+            <a href="#" class="btn_lien">VOIR LE CODE</a>
+    </template>
     
     <section id="entete" class="entete">
         <nav>
@@ -254,17 +273,6 @@
                 }
 
         ?>                      
-            <div class="unProjet">
-                <div class="imgContainer">
-                    <img src="./images/art_pub_mtl_miniature.jpg">
-                </div>
-                <div class="projetHov">
-                    <div class="texte">
-                        <p class="titre">ART PUB MTL</p>
-                        <a class="plus">EN SAVOIR PLUS</a>
-                    </div>
-                </div>
-            </div>
         </article>
     </section>
     <footer id="contact">
@@ -280,34 +288,7 @@
                     <div class="x_droit"></div>
                     <div class="x_gauche"></div>
         </div>
-        <div class="contenue">
-
-        <?php
-            
-        ?>
-            <h2 class="nom_mobile">ART PUB MTL</h2>
-            <div class="left">
-                <img src="./images/mokup.png"/>
-                
-            </div>
-            <div class="right">
-                <h2 class="nom">ART PUB MTL</h2>
-            <p class="type">WEB</p>
-            <div class="selecteurContenue">
-                <p class="description actif">DESCRIPTION</p>
-                <p class="languages">LANGUAGES</p>
-            </div>
-                <p class="laDescription actif">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce eget odio sit amet sem porttitor sollicitudin. Suspendisse lectus metus, porta quis suscipit sit amet, eleifend sit amet eros. Fusce a velit et ipsum elementum lacinia at id libero. Donec ac est id metus blandit dignissim id vitae augue. Ut sed congue sapien. Aenean mollis nulla at lorem sollicitudin placerat.</p>
-                <ul class="laListeLanguages">
-                    <li>PHP</li>
-                    <li>JAVASCRIPT</li>
-                    <li>HTML</li>
-                    <li>AJAX</li>
-                    <li>CSS</li>
-                </ul>
-            </div>
-            <a href="#" class="btn_lien">VOIR LE PROJET</a>
-        </div>
+        <div class="contenue"></div>
     </section>
 </body>
 </html>
