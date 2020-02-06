@@ -9,7 +9,7 @@
     <link rel="stylesheet" type="text/css" href="./styles/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Overpass:300,400&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>Saul Turbide</title>
 </head>
 
 <?php
@@ -36,7 +36,8 @@
     JOIN imageprojet ip
     ON ip.id_projet = p.id
     JOIN images i
-    ON i.id_image = ip.id_image";
+    ON i.id_image = ip.id_image
+    ORDER BY p.id";
     $projets = $conn->query($sql);
 
     if ($projets->num_rows > 0) {
@@ -90,7 +91,7 @@
                 <ul class="laListeLanguages">
                 </ul>
             </div>
-            <a href="#" class="btn_lien">VOIR LE CODE</a>
+            <a href="{{lien_web}}" target="_blank" class="btn_lien">VOIR LE CODE</a>
     </template>
     
     <section id="entete" class="entete">
@@ -151,7 +152,7 @@
                     <p>Finissant en Intégration multimédia au Collège de 
                         Maisonneuve et passionné par le développement web.
                          Toujours à la recherche de nouveaux défis!</p>
-                    <a href="#">une idée en tête?</a>
+                    <a href="#contact">une idée en tête?</a>
                 </div>
             </div>
             
@@ -160,15 +161,15 @@
                     <div class="language">
                         <p>JavaScript</p>
                     </div>
-                    <div class="mesure">
+                    <div class="mesure js">
                         <div class="plein"></div>
                     </div>
                 </div>
                 <div class="competences fade-in">
-                    <div class="language">
+                    <div class="language ">
                         <p>PHP</p>
                     </div>
-                    <div class="mesure">
+                    <div class="mesure php">
                         <div class="plein"></div>
                     </div>
                 </div>
@@ -176,7 +177,7 @@
                     <div class="language">
                         <p>CSS</p>
                     </div>
-                    <div class="mesure">
+                    <div class="mesure css">
                         <div class="plein"></div>
                     </div>
                 </div>
@@ -184,7 +185,7 @@
                     <div class="language">
                         <p>HTML</p>
                     </div>
-                    <div class="mesure">
+                    <div class="mesure html">
                         <div class="plein"></div>
                     </div>
                 </div>
@@ -192,7 +193,7 @@
                     <div class="language">
                         <p>Sql</p>
                     </div>
-                    <div class="mesure">
+                    <div class="mesure sql">
                         <div class="plein"></div>
                     </div>
                 </div>
@@ -200,7 +201,7 @@
                     <div class="language">
                         <p>Maya</p>
                     </div>
-                    <div class="mesure">
+                    <div class="mesure maya">
                         <div class="plein"></div>
                     </div>
                 </div>
@@ -208,7 +209,7 @@
                     <div class="language">
                         <p>Photoshop</p>
                     </div>
-                    <div class="mesure">
+                    <div class="mesure photoshop">
                         <div class="plein"></div>
                     </div>
                 </div>
@@ -216,7 +217,7 @@
                     <div class="language">
                         <p>Illustrator</p>
                     </div>
-                    <div class="mesure">
+                    <div class="mesure ill">
                         <div class="plein"></div>
                     </div>
                 </div>
@@ -224,7 +225,7 @@
                     <div class="language">
                         <p>Premiere</p>
                     </div>
-                    <div class="mesure">
+                    <div class="mesure premiere">
                         <div class="plein"></div>
                     </div>
                 </div>
@@ -232,7 +233,7 @@
                     <div class="language">
                         <p>Unity</p>
                     </div>
-                    <div class="mesure">
+                    <div class="mesure unity">
                         <div class="plein"></div>
                     </div>
                 </div>

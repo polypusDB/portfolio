@@ -1,5 +1,7 @@
 (function(){
     window.addEventListener("load", function(){
+
+        let body = document.querySelector("body");
         let btn_close = document.querySelector(".btn_X");
         let dialog_box = document.querySelector(".projetSelect");
         let parent_projet = document.querySelector(".mesProjets");
@@ -8,28 +10,35 @@
         let menu_burg = document.querySelector(".menu_burger");
         let menu_ul = document.querySelector(".menu");
 
-        let selecteur = this.document.querySelector(".selecteurContenue");
-        let selecteurLan = this.document.querySelector(".languages");
-        let selecteurDes = this.document.querySelector(".description");
+
+
         
-        let listeLanguages = this.document.querySelector(".laListeLanguages");
-        let laDescription = this.document.querySelector(".laDescription");
 
         let template = document.querySelector("#detailProjet");
         let parent = document.querySelector(".contenue");
 
+        let liensNav = document.querySelectorAll(".menu a");
 
         let projets;
+
+
         function getProjets(){
             $.get("projetDetails.php",{"idProjet" : 1}, (data)=>{
                 
-                // console.log(JSON.parse(data));
                 projets = JSON.parse(data);
-                // renderProjet();
                 
             })
         }
 
+        liensNav.forEach(lien => {
+            
+            lien.addEventListener("click", function(){
+                menu_burg.classList.remove("actif");
+                menu_burg.classList.add("fermer");
+                menu_ul.classList.toggle("open");
+                body.classList.remove("noScroll");
+            })
+        })
         // function renderProjet(data){
         //     console.log(data);
 
@@ -39,15 +48,20 @@
             if(menu_burg.classList.contains("actif")){
                 menu_burg.classList.remove("actif");
                 menu_burg.classList.add("fermer");
+                body.classList.remove("noScroll");
             }
             else{
                 menu_burg.classList.add("actif");
                 menu_burg.classList.remove("fermer");
+                body.classList.add("noScroll");
 
 
             }
             menu_ul.classList.toggle("open");
         })
+
+
+
         /**
          * fermer la boîte de dialogue
          */
@@ -63,6 +77,7 @@
             let projectID = evt.target.parentNode.classList[1];
             let leProjet = projets[projectID-1];
 
+            console.log(leProjet)
             leProjet.src = leProjet.images[0].src;
             let unProjet = template.cloneNode(true);
             for(let prop in leProjet){
@@ -72,11 +87,7 @@
             }
             let nouveauNoeud = document.importNode(unProjet.content, true);
             parent.append(nouveauNoeud);
-            // for(let i=0;i<=leProjet.languages.length;i++){
-            //     let li = document.createElement("LI");
-            //     li.textContent = leProjet.languages[i];
-            //     listeParent.append(li);
-            // }
+
             dialog_box.classList.toggle("close");
             loadingliste(leProjet.languages);
 
@@ -102,25 +113,33 @@
             }
         }
 
-        // selecteur.addEventListener("click", function(evt){
-        //     if(!evt.target.classList.contains("actif")){
-        //         selecteurLan.classList.toggle("actif");
-        //         selecteurDes.classList.toggle("actif");
 
-        //         laDescription.classList.toggle("actif");
-        //         listeLanguages.classList.toggle("actif");
-        //     }
-        // })
+        dialog_box.addEventListener("click", function(evt){
+
+    
+            let listeLanguages = document.querySelector(".laListeLanguages");
+            let laDescription = document.querySelector(".laDescription");
+
+            let selecteurLan = document.querySelector(".languages");
+            let selecteurDes = document.querySelector(".description");
+            // console.log(evt.target.classList)
+            if(evt.target.classList.contains("languages") || evt.target.classList.contains("description")){
+                if(!evt.target.classList.contains("actif")){
+
+                    
+                    selecteurLan.classList.toggle("actif");
+                    selecteurDes.classList.toggle("actif");
+    
+                    laDescription.classList.toggle("actif");
+                    listeLanguages.classList.toggle("actif");
+                }
+
+            }
+        });
 
 
 
 
-        // window.addEventListener("scroll", function(){
-        //     var rect = filtre.getBoundingClientRect(),
-        //     scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
-        //     scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        //     console.dir(rect); 
-        // })
 
 
 
@@ -156,9 +175,9 @@ const appreaOptions = {
             appearOnScroll.observe(fader);
         })
 
-
-
         
+
+
         getProjets();
 
 
