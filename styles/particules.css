@@ -1,0 +1,99 @@
+/*L'annimation des particules qui sert de background de la section entete*/
+
+/*POSITIONNEMENT DE LA SECTION DE PARTICULE*/
+#particules{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+}
+/*POSITIONNEMENT DE LA LISTE*/
+.lesparticules{
+    position: absolute;
+    z-index: 45;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+/*POSITIONNEMENTS DES PARTICULES PLUS BAS QUE LA ZONE DE PARTICULE*/
+#particules li{
+    position: absolute;
+    display: block;
+    list-style: none;
+    animation: animate 20s linear infinite;
+    bottom: -200px;
+}
+
+#particules li img{
+    width: 100%;
+}
+
+/*POSITION DE BASE DES PARTICULES*/
+#particules li:nth-last-of-type(1){
+    left: 86%;
+    width: 30px;
+    animation-delay: 0;
+}
+
+#particules li:nth-last-of-type(2){
+    left: 12%;
+    width: 50px;
+    animation-delay: 5.5s;
+}
+
+#particules li:nth-last-of-type(3){
+    left: 70%;
+    width: 80px;
+    animation-delay: 10s;
+}
+
+#particules li:nth-last-of-type(4){
+    left: 33%;
+    width: 57px;
+    animation-delay: 15s;
+}
+
+#particules li:nth-last-of-type(5){
+    left: 50%;
+    width: 92px;
+    animation-delay: 3.5s;
+}
+#particules li:nth-last-of-type(6){
+    left: 90%;
+    width: 40px;
+    animation-delay: 18s;  
+}
+#particules li:nth-last-of-type(7){
+    left: 10%;
+    width: 58px;
+    animation-delay: 4s;  
+}
+#particules li:nth-last-of-type(8){
+    left: 63%;
+    width: 100px;
+    animation-delay: 13s;  
+}
+#particules li:nth-last-of-type(9){
+    left: 5%;
+    width: 25px;
+    animation-delay: 8s;  
+}
+
+/*ANNIMATION DES PARTICULES*/
+@keyframes animate
+{
+0%{
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+}
+
+100%{
+    transform: translateY(-800px) rotate(360deg);
+    opacity: 0;
+}
+    
+}
+

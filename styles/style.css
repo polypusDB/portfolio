@@ -1,22 +1,3 @@
-/* polices de caractères*/
-@font-face{
-    font-family: sansation;
-    src: url(./polices/Sansation_Regular.ttf)
-}
-@font-face{
-    font-family: sansationLight;
-    src: url(./polices/Sansation_Light.ttf)
-}
-@font-face{
-    font-family: sansationBold;
-    src: url(./polices/Sansation\ Bold.ttf)
-}
-
-@font-face{
-    font-family: seoul;
-    src: url(./polices/SeoulNamsanCondensed-Black.ttf)
-}
-
 
 .noScroll{
     height: 100%;
@@ -37,124 +18,7 @@ body{
     font-family: 'sansationLight', sans-serif;
 }
 
-/*STYLES DE L'ENTETE*/
-.entete{
-    width: 100%;
-    height: 100vh;
-    background-color: #282D40;
-}
-.entete nav{
 
-    z-index: 100;
-    position: fixed;
-    padding: 15px 15px 15px 0;
-    display: flex;
-    min-height: 30px;
-    width: 100%;
-    background-color: rgba(40, 45, 64, 0.95);
-}
-
-.menu_burger{
-    display: none;
-    position: fixed;
-    right: 20px;
-    height: 33px;
-    width: 33px;
-    z-index: 101;
-}
-
-
-
-._haut,
-._milieu,
-._bas{
-    width: 100%;
-    height: 3px;
-    background-color: #EEEEEE;
-}
-
-.menu_burger.bleu>div{
-    background-color: #282D40;
-}
-
-._haut{
-    position: absolute;
-    top: 0;
-    
-
-}
-
-._milieu{
-    top: 11px;
-    position: absolute;
-}
-
-._bas{
-    top: 22px;
-    position: absolute;
-}
-
-
-.entete nav ul{
-    display: flex;
-}
-
-
-nav ul a:hover{
-    font-family: "sansationBold", "sans-serif";
-}
-nav ul li{
-    text-align: center;
-    min-width: 111px;
-}
-nav ul a {
-    padding: 15px 0px;
-    text-decoration: none;
-    color: white;
-}
-
-nav ul .actif{
-    font-family: "sansationBold", "sans-serif";
-}
-.bumper{
-    flex-grow: 2;
-}
-
-.entete>div{
-    font-size: 36px;
-    text-align: center;
-    position: relative;
-    top: 40vh;
-}
-/*BOUTON POUR ALLER VOIR LES PROJET*/
-.btnVoir{
-    color: #EEEEEE;
-    text-decoration: none;
-    user-select: none;
-    cursor: pointer;
-    padding: 10px;
-    border: 2px #EEEEEE solid;
-    font-size: 30px;
-
-    transition: color 250ms, background-color 250ms;
-}
-
-.btnVoir:hover{
-    color: #282D40;
-    background-color: #EEEEEE;
-
-    transition: color 250ms, background-color 250ms;
-}
-
-
-
-h1{
-    padding: 15px 15px 25px 15px;
-
-}
-.entete span{
-    font-family: 'sansationBold', sans-serif;
-}
 
 /*STYLES DE LA SECTION À PROPOS*/
 .propos{
@@ -216,6 +80,7 @@ h1{
 
 /*ICONES INDIVIDUELS FORMES ET PLACEMENTS*/
 .icone{
+    -webkit-clip-path: polygon(50% 5%, 90% 25%, 90% 75%, 50% 95%, 10% 75%, 10% 25%);
     clip-path: polygon(50% 5%, 90% 25%, 90% 75%, 50% 95%, 10% 75%, 10% 25%);
     display: flex;
     flex-direction: column;
@@ -233,6 +98,7 @@ article{
     display: flex;
 }
 .profil{
+    -webkit-clip-path: polygon(50% 5%, 90% 25%, 90% 75%, 50% 95%, 10% 75%, 10% 25%);
     clip-path: polygon(50% 5%, 90% 25%, 90% 75%, 50% 95%, 10% 75%, 10% 25%);
     width: 300px;
     justify-content: center;
@@ -323,15 +189,15 @@ article a{
 }
 .mesure.html.appear{
     transition-delay: 200ms;
-    width: 82%;
+    width: 80%;
 }
 .mesure.sql.appear{
     transition-delay: 200ms;
-    width: 73%;
+    width: 75%;
 }
 .mesure.maya.appear{
     transition-delay: 200ms;
-    width: 72%;
+    width: 70%;
 }
 .mesure.photoshop.appear{
     transition-delay: 200ms;
@@ -431,9 +297,24 @@ article a{
 
 .unProjet:hover .projetHov{
     opacity: 1;
-
-    transition: opacity 250ms ease-in;
+    transition: opacity 350ms ease-in;
 }
+
+.unProjet.desactive .projetHov{
+    background-color: rgba(40, 45, 64, 0.80);
+    opacity: 1;
+    transition: opacity 350ms ease-in;
+}
+
+
+.unProjet.desactive:hover{
+    cursor: auto;
+    transform: scale(1,1);
+}
+.unProjet.desactive .projetHov .texte{
+    opacity: 0;
+}
+
 
 
 
@@ -657,50 +538,60 @@ footer>p{
 /*média querry---------------------------------------------------------------------------------------------------*/
 @media only screen and (max-width: 1200px) {
 
-.propos{
-    font-size: 35px;
-}
+    .propos{
+        font-size: 35px;
+    }
 
-.icone{
-    max-width: 129px;
-    max-height: 129px;
-}
+    .icone{
+        max-width: 129px;
+        max-height: 129px;
+    }
 
-.icones{
-    font-size: 30px;
-}
-.right{
-    width: 36%;
-}
+    .icones{
+        font-size: 30px;
+    }
+    .right{
+        width: 36%;
+    }
 
-.left{
-    padding: 6vh 0 0 0;
-    width: 60%;
-}
+    .left{
+        padding: 6vh 0 0 0;
+        width: 60%;
+    }
 
 
-.right>p{
-    font-size: 20px;
-}
+    .right>p{
+        font-size: 20px;
+    }
 
-.right .type{
-    font-size: 45px;
-    padding: 25px 0 30px 0;
-}
+    .right .type{
+        font-size: 45px;
+        padding: 25px 0 30px 0;
+    }
 
-.right .nom{
-    padding: 25px 0 30px 0;
-    font-size: 50px;
-}
+    .right .nom{
+        padding: 25px 0 30px 0;
+        font-size: 50px;
+    }
 
-.right ul{
-    font-size: 20px;
-}
+    .right ul{
+        font-size: 20px;
+    }
 
-.left{
-    flex-direction: column;
-    justify-content: center;
-}
+    .left{
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    footer h3{
+        padding-bottom: 5px;
+        font-size: 30px;
+    }
+
+    footer p{
+        padding: 10px 20px 10px 0; 
+        font-size: 20px;
+    }
 
 }
 
@@ -836,7 +727,6 @@ footer>p{
     }
 
     .entete>div{
-        top: 30vh;
         font-size: 25px;
     }
 
@@ -887,7 +777,47 @@ footer>p{
     .language p{
         font-size: 14;
     }
-
+    
+    .mesure.js.appear{
+        transition-delay: 200ms;
+        width: 70%;
+    }
+    .mesure.php.appear{
+        transition-delay: 200ms;
+        width: 60%;
+    }
+    .mesure.css.appear{
+        transition-delay: 200ms;
+        width: 65%;
+    }
+    .mesure.html.appear{
+        transition-delay: 200ms;
+        width: 70%;
+    }
+    .mesure.sql.appear{
+        transition-delay: 200ms;
+        width: 65%;
+    }
+    .mesure.maya.appear{
+        transition-delay: 200ms;
+        width: 65%;
+    }
+    .mesure.photoshop.appear{
+        transition-delay: 200ms;
+        width: 35%;
+    }
+    .mesure.ill.appear{
+        transition-delay: 200ms;
+        width: 60%;
+    }
+    .mesure.premiere.appear{
+        transition-delay: 200ms;
+        width: 45%;
+    }
+    .mesure.unity.appear{
+        transition-delay: 200ms;
+        width: 65%;
+    }
     .qui p{
         padding-bottom: 25px;
     }
@@ -935,10 +865,7 @@ footer>p{
         flex-direction: column;
     }
 
-    footer h3{
-        padding-bottom: 5px;
-        font-size: 30px;
-    }
+
 
     .nom{
         display:none;
@@ -951,25 +878,35 @@ footer>p{
 
     .right{
         width: 100%;
+        text-align: center;
     }
 
     .right>p {
-        display: none;
-        padding:  15px 30px;
+        position: absolute;
+        transform: translateX(-100vw);
+        padding:  30px 30px;
+        transition: transform 150ms ease-in-out;
     }
 
     .right>p.actif{
-        display: block;
+        transform: translateX(0);
+        transition: transform 150ms ease-in-out;
     }
 
     .right ul{
-        display: none;
+        position: absolute;
+        padding-top: 15px;
+        margin: auto;
+        margin: auto;
+        display: flex;
+        transform: translateX(100vw);
+        transition: transform 150ms ease-in-out;
     }
 
     .right ul.actif{
-        display: flex;
-        padding-top: 15px;
-        margin: auto;
+
+        transform: translateX(0);
+        transition: transform 150ms ease-in-out;
     }
 
     .right .selecteurContenue{
@@ -1041,15 +978,13 @@ footer>p{
     }
 
 
-    
-    footer p{
-        padding: 10px 20px 10px 0; 
-        font-size: 20px;
-    }
-
     footer>p:nth-of-type(2){
         display: none;
+
+        
     }
+
+
   } 
 
 

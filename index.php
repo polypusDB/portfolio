@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="./scripts/script.js"></script>
+
     <link rel="stylesheet" type="text/css" href="./styles/reset.css">
+    <link rel="stylesheet" type="text/css" href="./styles/font.css">
+    <link rel="stylesheet" type="text/css" href="./styles/particules.css">
+    <link rel="stylesheet" type="text/css" href="./styles/entete.css">
     <link rel="stylesheet" type="text/css" href="./styles/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Overpass:300,400&display=swap" rel="stylesheet">
@@ -13,68 +17,12 @@
 </head>
 
 <?php
-
+    //
     
-    $servername = "localhost"; // db5000288875.hosting-data.io
-    $username = "root"; // dbu297767
-    $password = ""; //1073582St.
-    $db = "portfolio"; //dbs282112
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $db);
-
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-
-    $conn->set_charset("utf8");
-
-    $res = Array();
-    $sql = "SELECT  p.*, i.*
-    from projets p
-    JOIN imageprojet ip
-    ON ip.id_projet = p.id
-    JOIN images i
-    ON i.id_image = ip.id_image
-    ORDER BY p.id";
-    $projets = $conn->query($sql);
-
-    if ($projets->num_rows > 0) {
-        while($projet = $projets->fetch_assoc()) {
-            $pro = end($res);
-				if(isset($pro) && $pro['id'] != $projet['id']){
-                    $projet["images"] = array();
-                    $projet["images"][] = array(
-                                                "src" => $projet["src"],
-                                                "role" => $projet["role"],
-                                                "meta" => $projet["meta"],
-                                                );
-                    unset($projet["id_image"]);
-                    unset($projet["src"]);
-                    unset($projet["role"]);
-                    unset($projet["meta"]);
-                    $res[] = $projet;
-                }
-                else if(isset($pro) && $pro['id'] == $projet['id']){
-                    $i = count($res)-1;
-                    $res[$i]["images"][] = array(
-                                                "src" => $projet["src"],
-                                                "role" => $projet["role"],
-                                                "meta" => $projet["meta"],
-                                                );
-                }
-        }
-
-
-
-    }
-
-    // include("./projetDetails.php");
-
 ?>
 
 <body>
+    <!-- TEMPLATE POUR LES DÉTAILS DE PROJETS -->
     <template id="detailProjet">
             <h2 class="nom_mobile">{{titre}}</h2>
             <div class="left">
@@ -92,10 +40,13 @@
                 </ul>
             </div>
             <a href="{{lien_web}}" target="_blank" class="btn_lien">VOIR LE CODE</a>
+            <!-- FIN DU TEMPLATE -->
     </template>
-    
-    <section id="entete" class="entete">
+    <!-- SECTION ENTÊTE -->
+    <section id="enteteNav" class="entete navObs">
+        <!-- BARRE DE NAVIGATION -->
         <nav>
+            <!-- MENU BURGER  -->
             <div class="bumper"></div>
             <div class="menu_burger">
                 <div class="_haut"></div>
@@ -103,19 +54,35 @@
                 <div class="_bas"></div>
             </div>
             <ul class="menu">
-                <li><a class="actif" href="#entete">ACCUEIL</a></li>
-                <li><a href="#propos">À PROPOS</a></li>
-                <li><a href="#projet">PORTFOLIO</a></li>
-                <li><a href="#contact">CONTACT</a></li>
+                <li><a class="enteteNav actif" href="#enteteNav">ACCUEIL</a></li>
+                <li><a class="proposNav" href="#proposNav">À PROPOS</a></li>
+                <li><a class="projetsNav" href="#projetNav">PROJETS</a></li>
+                <li><a class="contactNav" href="#contactNav">CONTACT</a></li>
             </ul>
         </nav>
         <div>
             <h1>BONJOUR, JE M'APPELLE <span>SAUL TURBIDE</span><br>ET JE SUIS INTÉGRATEUR MULTIMÉDIA</h1>
-            <a href="#projet" class="btnVoir">VOIR MES RÉALISATIONS</a>
+            <a href="#projetsNav" class="btnVoir">VOIR MES RÉALISATIONS</a>
         </div>
+        <!-- DIVISION SYSTÈME DE PARTICULES -->
+        <div id="particules">
+        <ul class="lesparticules">
+            <li><img src="./images/icones/css.png" alt="#"></li>
+            <li><img src="./images/icones/css.png" alt="#"></li>
+            <li><img src="./images/icones/css.png" alt="#"></li>
+            <li><img src="./images/icones/html.png" alt="#"></li>
+            <li><img src="./images/icones/html.png" alt="#"></li>
+            <li><img src="./images/icones/html.png" alt="#"></li>
+            <li><img src="./images/icones/js.png" alt="#"></li>
+            <li><img src="./images/icones/js.png" alt="#"></li>
+            <li><img src="./images/icones/js.png" alt="#"></li>
+        </ul>
+    </div>
     </section>
-    <section id="propos" class="propos">
+    <!-- SECTION À PROPOS -->
+    <section id="proposNav" class="propos navObs">
         <h2>À PROPOS</h2>
+        <!-- DIVISION COMPÉTENCES -->
         <div class="icones">
             <div>
                 <div class="icone">
@@ -142,6 +109,7 @@
                 <p>BACK END</p>
             </div>
         </div>
+        <!-- SECTION : QUI-SUIS JE -->
         <article>
             <div class="qui">
                 <div>
@@ -152,10 +120,10 @@
                     <p>Finissant en Intégration multimédia au Collège de 
                         Maisonneuve et passionné par le développement web.
                          Toujours à la recherche de nouveaux défis!</p>
-                    <a href="#contact">une idée en tête?</a>
+                    <a href="#contactNav">une idée en tête?</a>
                 </div>
             </div>
-            
+            <!-- ASIDE BARRES DE COMPÉTENCES -->
             <aside>
                 <div class="competences fade-in">
                     <div class="language">
@@ -238,10 +206,14 @@
                     </div>
                 </div>
             </aside>
+            <!-- FIN DE L'AFFICHAGE DES BARRES DE COMPÉTENCES -->
         </article>
+        <!-- FIN DE LA SECTION QUI-SUIS JE -->
     </section>
-    <section id="projet" class="projets">
+     <!-- SECTION POUR L'AFFICHEGE DES PROJETS -->
+    <section id="projetsNav" class="projets navObs">
         <h3>PROJETS</h3>
+        <!-- DIV POUR LES FILTRES -->
         <div class="filtres">
             <ul>
                 <li class="filtre actif">TOUS</li>
@@ -249,41 +221,51 @@
                 <li class="filtre">JEUX</li>
                 <li class="filtre">3D</li>
             </ul>
+            <!-- FIN DES FILTRES -->
         </div>
+        
+        <!-- AFFICHAGE DES PROJETS -->
         <article class="mesProjets">
-
-
-
         <?php
-                for($i = 0; $i<= count($res)-1; $i++){
-                    extract($res[$i]);
-                    ?>
-                     <div class="unProjet  <?=$id?>">
-                        <div class="imgContainer">
-
-                            <img src="<?=$images[0]["src"]?>">
-                        </div>
-                         <div class="projetHov">
-                            <div  class="texte  <?=$id?>">
-                                <p class="titre"><?=$titre ?></p>
-                                <a class="plus">EN SAVOIR PLUS</a>
-                            </div>
+        /**
+         * Include de la connection à la base de données
+         * boucle dans les projets et affichega des éléments requis
+         */
+            include("./modele/listeProjets.php");
+            // include("./modele/projetDetails.php");
+            for($i = 0; $i<= count($res)-1; $i++){
+                extract($res[$i]);
+                ?>
+                
+                <div class="unProjet <?=$id?> <?=$type?>">
+                    <div class="imgContainer pointer">
+                        <img src="<?=$images[0]["src"]?>">
+                    </div>
+                    <div class="projetHov <?=$id?>">
+                        <div  class="texte <?=$id?>">
+                            <p class="titre"><?=$titre ?></p>
+                            <a class="plus <?=$id?>">EN SAVOIR PLUS</a>
                         </div>
                     </div>
-                     <?php
-                }
-
-        ?>                      
+                </div>
+            <?php
+            }
+        ?>
+        <!-- FIN DE L'AFFICHAGE DES PROJETS -->
         </article>
+        <!-- FIN DE LA SECTION POUR LES PROJETS -->
     </section>
-    <footer id="contact">
+    <!-- FOOTER -->
+    <footer id="contactNav" class="navObs">
         <div>
             <h3>Contact</h3>
             <p>saul.turbide@gmail.com</p>
         </div>
         <p>Intéressé par ce que vous voyez? Vous avez des idées vraiment cool et vous cherchez des gens pour les réaliser? </p>
         <p>N’hésitez pas à me contacter pour en parler et nous devrions pouvoir concrétiser votre vision!</p>
+        <!-- FIN DU FOOTER -->
     </footer>
+    <!-- SECTION BOÎTE DE DIALOGUE -->
     <section class="projetSelect close">
         <div class="btn_X">
                     <div class="x_droit"></div>

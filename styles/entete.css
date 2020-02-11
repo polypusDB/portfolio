@@ -1,0 +1,117 @@
+/*STYLES DE L'ENTETE*/
+.entete{
+    width: 100%;
+    height: 100vh;
+    background-color: #282D40;
+}
+.entete nav{
+
+    z-index: 100;
+    position: fixed;
+    padding: 15px 15px 15px 0;
+    display: flex;
+    min-height: 30px;
+    width: 100%;
+    background-color: rgba(40, 45, 64, 0.95);
+}
+/*style menu burger*/
+.menu_burger{
+    display: none;
+    position: fixed;
+    right: 20px;
+    height: 33px;
+    width: 33px;
+    z-index: 101;
+}
+
+._haut,
+._milieu,
+._bas{
+    width: 100%;
+    height: 3px;
+    background-color: #EEEEEE;
+}
+
+.menu_burger.bleu>div{
+    background-color: #282D40;
+}
+
+._haut{
+    position: absolute;
+    top: 0;
+    
+
+}
+
+._milieu{
+    top: 11px;
+    position: absolute;
+}
+
+._bas{
+    top: 22px;
+    position: absolute;
+}
+
+
+.entete nav ul{
+    display: flex;
+}
+
+nav ul a:hover{
+    font-family: "sansationBold", "sans-serif";
+}
+nav ul li{
+    text-align: center;
+    min-width: 111px;
+}
+nav ul a {
+    padding: 15px 0px;
+    text-decoration: none;
+    color: white;
+}
+
+nav ul .actif{
+    font-family: "sansationBold", "sans-serif";
+}
+.bumper{
+    flex-grow: 2;
+}
+
+.entete>div{
+    font-size: 36px;
+    text-align: center;
+    position: relative;
+    z-index: 50;
+    top: 40vh;
+}
+/*BOUTON POUR ALLER VOIR LES PROJET*/
+.btnVoir{
+    color: #EEEEEE;
+    text-decoration: none;
+    user-select: none;
+    cursor: pointer;
+    padding: 10px;
+    border: 2px #EEEEEE solid;
+    font-size: 30px;
+
+    transition: color 250ms, background-color 250ms;
+}
+
+.btnVoir:hover{
+    color: #282D40;
+    background-color: #EEEEEE;
+
+    transition: color 250ms, background-color 250ms;
+}
+
+
+
+h1{
+    padding: 15px 15px 25px 15px;
+
+}
+.entete span{
+    white-space: nowrap;
+    font-family: 'sansationBold', sans-serif;
+}

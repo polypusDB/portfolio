@@ -1,0 +1,18 @@
+/* polices de caractères*/
+@font-face{
+    font-family: sansation;
+    src: url(./polices/Sansation_Regular.ttf)
+}
+@font-face{
+    font-family: sansationLight;
+    src: url(./polices/Sansation_Light.ttf)
+}
+@font-face{
+    font-family: sansationBold;
+    src: url(./polices/Sansation\ Bold.ttf)
+}
+
+@font-face{
+    font-family: seoul;
+    src: url(./polices/SeoulNamsanCondensed-Black.ttf)
+}

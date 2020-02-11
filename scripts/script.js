@@ -9,6 +9,7 @@
         let filtre = document.querySelectorAll(".filtre");
         let menu_burg = document.querySelector(".menu_burger");
         let menu_ul = document.querySelector(".menu");
+        let menuElem = document.querySelectorAll(".menu li a");
 
 
 
@@ -23,7 +24,7 @@
 
 
         function getProjets(){
-            $.get("projetDetails.php",{"idProjet" : 1}, (data)=>{
+            $.get("./modele/projetDetails.php", (data)=>{
                 
                 projets = JSON.parse(data);
                 
@@ -39,10 +40,6 @@
                 body.classList.remove("noScroll");
             })
         })
-        // function renderProjet(data){
-        //     console.log(data);
-
-        // }
 
         menu_burg.addEventListener("click", function(){
             if(menu_burg.classList.contains("actif")){
@@ -74,35 +71,54 @@
          * ouvrir la boîte de dialoague
          */
         parent_projet.addEventListener("click", function(evt){
-            let projectID = evt.target.parentNode.classList[1];
-            let leProjet = projets[projectID-1];
-
-            console.log(leProjet)
-            leProjet.src = leProjet.images[0].src;
-            let unProjet = template.cloneNode(true);
-            for(let prop in leProjet){
-
-                let regExp = new RegExp("{{"+prop+"}}", "g");
-                unProjet.innerHTML = unProjet.innerHTML.replace(regExp, leProjet[prop]);   
+            if(!evt.target.parentNode.classList.contains("desactive" )){
+                let projectID = evt.target.parentNode.classList[1];
+                let leProjet = projets[projectID-1];
+    
+                leProjet.src = leProjet.images[0].src;
+                let unProjet = template.cloneNode(true);
+                for(let prop in leProjet){
+    
+                    let regExp = new RegExp("{{"+prop+"}}", "g");
+                    unProjet.innerHTML = unProjet.innerHTML.replace(regExp, leProjet[prop]);   
+                }
+                let nouveauNoeud = document.importNode(unProjet.content, true);
+                parent.append(nouveauNoeud);
+    
+                dialog_box.classList.toggle("close");
+                loadingliste(leProjet.languages);
             }
-            let nouveauNoeud = document.importNode(unProjet.content, true);
-            parent.append(nouveauNoeud);
-
-            dialog_box.classList.toggle("close");
-            loadingliste(leProjet.languages);
-
         });
 
         filtres.addEventListener("click", function(evt){
-            
-            if(evt.target.classList.contains("filtre")){
+            let projetFiltrer = parent_projet.children;
+            var arrProjet = [].slice.call(projetFiltrer);
+            let pointer = document.querySelectorAll(".pointer")
+            if(evt.target.classList.contains("filtre") && !evt.target.classList.contains("actif")){
                 for(let i = 0; i<filtre.length; i++){
-                    console.log("allo");
+                    
                     filtre[i].classList.remove("actif");
                 }
                 evt.target.classList.add("actif");
+                arrProjet.forEach(filtrerP =>{
+                    
+                    var arrChild = [].slice.call(filtrerP.children);
+                    filtrerP.classList.remove("desactive");
+                    if(evt.target.innerHTML == "TOUS"){
+                        filtrerP.classList.remove("desactive");
+
+                    }
+                    else if(!filtrerP.classList.contains(evt.target.innerHTML)){
+                        filtrerP.classList.add("desactive");
+                        arrChild.forEach(unChild =>{
+                            unChild.classList.add("desactive");
+                        })
+                    }
+
+
+                })
             }
-        })
+        }) 
 
         function loadingliste(liste){
             let listeParent = document.querySelector(".laListeLanguages");
@@ -122,7 +138,6 @@
 
             let selecteurLan = document.querySelector(".languages");
             let selecteurDes = document.querySelector(".description");
-            // console.log(evt.target.classList)
             if(evt.target.classList.contains("languages") || evt.target.classList.contains("description")){
                 if(!evt.target.classList.contains("actif")){
 
@@ -154,6 +169,7 @@ const appreaOptions = {
 };
 
         const faders = document.querySelectorAll(".fade-in");
+        const navObs = document.querySelectorAll(".navObs");
         const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll){
 
             entries.forEach(entry =>{
@@ -171,8 +187,40 @@ const appreaOptions = {
 
     
         faders.forEach(fader => {
-            // console.log(fader.children[1]);
             appearOnScroll.observe(fader);
+        })
+
+
+        const obsOption = {
+            root: null,
+            threshold: 0.25,
+            rootMargin: "0px"
+        };
+
+
+        const interNav = new IntersectionObserver(function(entries, interNav){
+
+            entries.forEach(entry =>{
+                if(!entry.isIntersecting){
+                    return;
+                }
+                menuElem.forEach(menuItem =>{
+                    if(menuItem.classList.contains(entry.target.id)){
+                        menuItem.classList.add("actif")
+                    }
+                    else{
+                        menuItem.classList.remove("actif")
+                    }
+                })
+                
+            });
+
+
+
+        }, obsOption)
+
+        navObs.forEach(navob => {
+            interNav.observe(navob);
         })
 
         
@@ -182,5 +230,8 @@ const appreaOptions = {
 
 
     });
+
+
+
 
 })()
