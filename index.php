@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/lazy_annimation.js"></script>
+    <script src="./scripts/menu.js"></script>
 
     <link rel="stylesheet" type="text/css" href="./styles/reset.css">
     <link rel="stylesheet" type="text/css" href="./styles/font.css">
@@ -12,12 +14,12 @@
     <link rel="stylesheet" type="text/css" href="./styles/entete.css">
     <link rel="stylesheet" type="text/css" href="./styles/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link href="https://fonts.googleapis.com/css?family=Overpass:300,400&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css?family=Overpass:300,400&display=swap" rel="stylesheet"> -->
     <title>Saul Turbide</title>
 </head>
 
 <?php
-    //
+    include("./modele/connection.php");
     
 ?>
 
@@ -26,7 +28,7 @@
     <template id="detailProjet">
             <h2 class="nom_mobile">{{titre}}</h2>
             <div class="left">
-                <img src="{{src}}"/>
+                <img src="{{src}}" atl="{{alt}}"/>
             </div>
             <div class="right">
                 <h2 class="nom">{{titre}}</h2>
@@ -56,7 +58,7 @@
             <ul class="menu">
                 <li><a class="enteteNav actif" href="#enteteNav">ACCUEIL</a></li>
                 <li><a class="proposNav" href="#proposNav">À PROPOS</a></li>
-                <li><a class="projetsNav" href="#projetNav">PROJETS</a></li>
+                <li><a class="projetsNav" href="#projetsNav">PROJETS</a></li>
                 <li><a class="contactNav" href="#contactNav">CONTACT</a></li>
             </ul>
         </nav>

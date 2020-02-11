@@ -24,6 +24,7 @@
     z-index: 101;
 }
 
+
 ._haut,
 ._milieu,
 ._bas{
@@ -53,7 +54,7 @@
     position: absolute;
 }
 
-
+/*FIN DES STYLE DU MENU BURGER*/
 .entete nav ul{
     display: flex;
 }

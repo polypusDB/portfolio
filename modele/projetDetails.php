@@ -1,17 +1,6 @@
 <?php
+include("./connection.php");
 
-$servername = "localhost"; // db5000288875.hosting-data.io
-$username = "root"; // dbu297767
-$password = ""; //1073582St.
-$db = "portfolio"; //dbs282112
-
-// Create connection
-$conn = new mysqli($servername, $username, $password, $db);
-$conn->set_charset("utf8");
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
 
 $res = Array();
 $sql = "SELECT  p.*, i.*, l.nom
@@ -27,9 +16,6 @@ ON l.nom = pl.nom_lang
 WHERE i.role = 'mokup'
 ORDER BY p.id";
 $projets = $conn->query($sql);
-
-
-
 
 if ($projets->num_rows > 0) {
     while($projet = $projets->fetch_assoc()) {
@@ -56,14 +42,8 @@ if ($projets->num_rows > 0) {
                 $res[$i]["languages"][] = $projet["nom"];
             }
     }
-
-    
-
 }
 
 echo json_encode($res);
-
-
-//var_dump($res);
 ?>
 
