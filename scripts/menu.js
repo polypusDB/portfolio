@@ -16,6 +16,7 @@
                 menu_burg.classList.add("fermer");
                 menu_ul.classList.toggle("open");
                 body.classList.remove("noScroll");
+                
             })
         })
 
@@ -24,15 +25,16 @@
                 menu_burg.classList.remove("actif");
                 menu_burg.classList.add("fermer");
                 body.classList.remove("noScroll");
+                
             }
             else{
                 menu_burg.classList.add("actif");
                 menu_burg.classList.remove("fermer");
                 body.classList.add("noScroll");
-
-
+                
             }
             menu_ul.classList.toggle("open");
         })
+
     })
 })()

@@ -60,20 +60,24 @@
 }
 
 nav ul a:hover{
-    font-family: "sansationBold", "sans-serif";
+    border-bottom: 1px white solid;
+    transition: border-bottom 150ms ease-in-out;
 }
 nav ul li{
     text-align: center;
     min-width: 111px;
 }
 nav ul a {
-    padding: 15px 0px;
+    padding: 15px 10px 5px 10px ;
     text-decoration: none;
     color: white;
+    border-bottom: 1px transparent solid;
+    transition: border-bottom 150ms ease-in-out;
 }
 
 nav ul .actif{
-    font-family: "sansationBold", "sans-serif";
+    border-bottom: 1px white solid;
+    transition: border-bottom 150ms ease-in-out;
 }
 .bumper{
     flex-grow: 2;

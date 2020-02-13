@@ -860,10 +860,11 @@ footer>p{
 
     .right{
         width: 100%;
-        text-align: center;
+        text-align: left;
     }
 
     .right>p {
+        font-size: 18px;
         position: absolute;
         transform: translateX(-100vw);
         padding:  30px 30px;
@@ -876,8 +877,10 @@ footer>p{
     }
 
     .right ul{
+        font-size: 18px;
         position: absolute;
         padding-top: 15px;
+        padding-left: 30px;
         margin: auto;
         margin: auto;
         display: flex;
@@ -922,6 +925,7 @@ footer>p{
     }
 
     .left{
+        padding-top: 10px;
         height: 35vh;
         width: 100%;
     }

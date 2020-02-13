@@ -60,6 +60,7 @@
                 <li><a class="proposNav" href="#proposNav">À PROPOS</a></li>
                 <li><a class="projetsNav" href="#projetsNav">PROJETS</a></li>
                 <li><a class="contactNav" href="#contactNav">CONTACT</a></li>
+                <li><a href="http://saulturbide.com/dist/">EXPLORATOIRE</a></li>
             </ul>
         </nav>
         <div>
@@ -69,15 +70,15 @@
         <!-- DIVISION SYSTÈME DE PARTICULES -->
         <div id="particules">
         <ul class="lesparticules">
-            <li><img src="./images/icones/css.png" alt="#"></li>
-            <li><img src="./images/icones/css.png" alt="#"></li>
-            <li><img src="./images/icones/css.png" alt="#"></li>
-            <li><img src="./images/icones/html.png" alt="#"></li>
-            <li><img src="./images/icones/html.png" alt="#"></li>
-            <li><img src="./images/icones/html.png" alt="#"></li>
-            <li><img src="./images/icones/js.png" alt="#"></li>
-            <li><img src="./images/icones/js.png" alt="#"></li>
-            <li><img src="./images/icones/js.png" alt="#"></li>
+            <li><img src="./images/icones/css.png" alt="particules"></li>
+            <li><img src="./images/icones/css.png" alt="particules"></li>
+            <li><img src="./images/icones/css.png" alt="particules"></li>
+            <li><img src="./images/icones/html.png" alt="particules"></li>
+            <li><img src="./images/icones/html.png" alt="particules"></li>
+            <li><img src="./images/icones/html.png" alt="particules"></li>
+            <li><img src="./images/icones/js.png" alt="particules"></li>
+            <li><img src="./images/icones/js.png" alt="particules"></li>
+            <li><img src="./images/icones/js.png" alt="particules"></li>
         </ul>
     </div>
     </section>
@@ -88,25 +89,25 @@
         <div class="icones">
             <div>
                 <div class="icone">
-                    <img src="./images/icones/fuse.png"/>
+                    <img src="./images/icones/fuse.png" alt="iconefuse"/>
                 </div>
                 <p>PERFORMANCE</p>
             </div>
             <div>
                 <div class="icone">
-                    <img src="./images/icones/frontEnd.png"/>
+                    <img src="./images/icones/frontEnd.png" alt="iconeFrontEnd"/>
                 </div>
                 <p>FRONT END</p>
             </div>
             <div>
                 <div class="icone">
-                    <img src="./images/icones/adap.png"/>
+                    <img src="./images/icones/adap.png" alt="iconeadaptabilité"/>
                 </div>
                 <p>ADAPTATIF</p>
             </div>
             <div>
                 <div class="icone">
-                    <img src="./images/icones/baseDonne.png"/>
+                    <img src="./images/icones/baseDonne.png" alt="iconeBaseDeDonné"/>
                 </div>
                 <p>BACK END</p>
             </div>
@@ -116,7 +117,7 @@
             <div class="qui">
                 <div>
                     <div class="profil">
-                        <img src="./images/profil.jpg">
+                        <img src="./images/profil.jpg" alt="SaulTurbide">
                     </div>
                     <h3>QUI SUIS-JE?</h3>
                     <p>Finissant en Intégration multimédia au Collège de 
@@ -241,7 +242,7 @@
                 
                 <div class="unProjet <?=$id?> <?=$type?>">
                     <div class="imgContainer pointer">
-                        <img src="<?=$images[0]["src"]?>">
+                        <img src="<?=$images[0]["src"]?>" atl="<?=$images[0]["meta"] ?>">
                     </div>
                     <div class="projetHov <?=$id?>">
                         <div  class="texte <?=$id?>">
